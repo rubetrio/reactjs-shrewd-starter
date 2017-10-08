@@ -2,8 +2,10 @@ const express = require('express')
 const path = require('path')
 const port = process.env.PORT || 8000
 const app = express()
+const compression = require('compression')
 
 // serve static assets normally
+app.use(compression())
 app.use(express.static(__dirname + '/public'))
 
 // handle every other route with index.html, which will contain

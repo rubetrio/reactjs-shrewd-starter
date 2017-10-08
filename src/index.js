@@ -6,7 +6,7 @@ import Home from './modules/homepage/Home'
 ReactDOM.render(
   <BrowserRouter>
     <div>
-      <Route path="/abc" component={Home} />
+      <Route path="/" component={Home} />
     </div>
   </BrowserRouter>
   ,
