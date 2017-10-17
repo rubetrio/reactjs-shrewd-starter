@@ -15,4 +15,4 @@ app.get('*', function (request, response){
 })
 
 app.listen(port)
-console.log("server started on port " + port)
+console.log("Server started @ http://localhost:8000/")

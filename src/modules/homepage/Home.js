@@ -7,9 +7,9 @@ class Home extends React.Component{
       <div>
         This is home.
         <br/>
-        <Link to="/pageA"> Page A </Link>
+        <Link to="/pageA/main"> Page A </Link>
         <br/>
-        <Link to="/pageB"> Page B </Link>
+        <Link to="/pageB/main"> Page B </Link>
         <br/>
       </div>
     )
