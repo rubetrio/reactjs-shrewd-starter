@@ -1,15 +1,30 @@
 import React from 'react'
 import { Route,Switch } from 'react-router-dom'
-import Home from './modules/homepage/Home'
-import ModuleA from './modules/moduleA/route.js'
-import ModuleB from './modules/moduleB/route.js'
+import Loadable from 'react-loadable'
+import LoadingComponent from './modules/common/LoadingComponent'
+
+
+const LoadableHome = Loadable({
+  loader: () => import('./modules/homepage/Home'),
+  loading: LoadingComponent
+})
+
+export const LoadableModuleA = Loadable({
+  loader: () => import('./modules/moduleA/routeA'),
+  loading: LoadingComponent
+})
+
+export const LoadableModuleB = Loadable({
+  loader: () => import('./modules/moduleB/routeB'),
+  loading: LoadingComponent
+})
 
 const routes = () => {
   return (
     <Switch>
-      <Route exact path="/" component={Home} />
-      <Route path='/pageA' component={ModuleA} />
-      <Route path='/pageB' component={ModuleB} />
+      <Route exact path="/" component={LoadableHome} />
+      <Route path='/pageA' component={LoadableModuleA} />
+      <Route path='/pageB' component={LoadableModuleB} />
     </Switch>
   )
 }

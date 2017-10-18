@@ -1,22 +1,28 @@
 const path = require('path')
 const webpack = require('webpack')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
+const { ReactLoadablePlugin } = require('react-loadable/webpack')
+const HTMLWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPluginConfig = new HTMLWebpackPlugin({
   template: './src/index.html',
   filename: 'index.html',
   inject: 'body'
 })
 
+const pkg = require('./package.json')
+
 module.exports = {
-  entry: [
-    'react-hot-loader/patch',
-    './src/index.js'
-  ],
+  entry: {
+    main: [
+      'react-hot-loader/patch',
+      './src/index.js'
+    ]
+  },
   output: {
       path: __dirname + '/public',
       publicPath: '/',
-      filename: 'index_bundle.js'
+      filename: '[name].js',
+      chunkFilename: '[name].bundle.js',
   },
   module: {
     loaders: [
@@ -32,15 +38,15 @@ module.exports = {
   },
   plugins: [
     HtmlWebpackPluginConfig,
-    // new BundleAnalyzerPlugin({
-    //     analyzerMode: 'static'
-    //  })
     new webpack.DefinePlugin({ // <-- key to reducing React's size
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
     new webpack.optimize.UglifyJsPlugin(), //minify everything
-    new webpack.optimize.AggressiveMergingPlugin()//Merge chunks
+    new webpack.optimize.AggressiveMergingPlugin(), //Merge chunks
+    new ReactLoadablePlugin({
+      filename:  path.resolve(__dirname, 'public', 'dist', 'react-loadable.json'),
+    })
   ]
 }
