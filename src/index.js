@@ -1,20 +1,28 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { render } from 'react-dom';
 import Home from './modules/homepage/Home'
-import ModuleA from './modules/moduleA/route.js'
-import ModuleB from './modules/moduleB/route.js'
+import ModuleA from './modules/moduleA/route'
+import ModuleB from './modules/moduleB/route'
+import RootRouter from './RootRouter'
+import routes from './route'
+import { AppContainer } from 'react-hot-loader';
 
-ReactDOM.render(
-  <BrowserRouter>
-    <div>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path='/pageA' component={ModuleA} />
-        <Route path='/pageB' component={ModuleB} />
-      </Switch>
-    </div>
-  </BrowserRouter>
-  ,
-  document.getElementById('element')
-)
+const renderApp = appRoutes => {``
+  render(
+    <AppContainer>
+      <RootRouter routes={appRoutes} />
+    </AppContainer>
+    ,
+    document.getElementById('element')
+  )
+}
+
+renderApp(routes)
+
+if (module.hot) {
+  module.hot.accept('./routes', () => {
+    const newRoutes = require('./routes').default;
+    renderApp(newRoutes)
+  })
+}

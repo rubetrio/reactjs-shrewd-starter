@@ -9,7 +9,10 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 })
 
 module.exports = {
-  entry: './src/index.js',
+  entry: [
+    'react-hot-loader/patch',
+    './src/index.js'
+  ],
   output: {
       path: __dirname + '/public',
       publicPath: '/',
@@ -19,7 +22,7 @@ module.exports = {
     loaders: [
       { test: /\.ts(x?)$/, loader: 'babel-loader!ts-loader' },
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ }
+      { test: /\.jsx$/, loader: ['react-hot-loader/webpack','babel-loader'], exclude: /node_modules/ }
     ]
   },
   devServer: {
