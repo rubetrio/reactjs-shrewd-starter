@@ -2,12 +2,10 @@ import React from 'react'
 import { Route,Switch } from 'react-router-dom'
 import Loadable from 'react-loadable'
 import LoadingComponent from './modules/common/LoadingComponent'
-
-
-const LoadableHome = Loadable({
-  loader: () => import('./modules/homepage/Home'),
-  loading: LoadingComponent
-})
+import { Link } from 'react-router-dom'
+import PageA1 from './modules/moduleA/PageA1'
+import PageA2 from './modules/moduleA/PageA2'
+import LeftBar from './modules/common/LeftBar'
 
 export const LoadableModuleA = Loadable({
   loader: () => import('./modules/moduleA/routeA'),
@@ -21,11 +19,16 @@ export const LoadableModuleB = Loadable({
 
 const routes = () => {
   return (
-    <Switch>
-      <Route exact path="/" component={LoadableHome} />
-      <Route path='/pageA' component={LoadableModuleA} />
-      <Route path='/pageB' component={LoadableModuleB} />
-    </Switch>
+    <div className='container'>
+      <LeftBar />
+      <div className='main'>
+        <Route path='/pageA' component={LoadableModuleA} />
+        <Route path='/pageA1' component={PageA1} />
+        <Route path='/pageA2' component={PageA2} />
+      </div>
+      <div className='sidebar-right'>
+      </div>
+    </div>
   )
 }
 

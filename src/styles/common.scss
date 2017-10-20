@@ -34,6 +34,10 @@ body {
 .sidebar-left-header{
   padding: 10px;
   color: #fff;
+  a:link, a:visited {
+    text-decoration: none;
+    color: #fff;
+  }
 }
 
 .sidebar-right{
@@ -47,3 +51,12 @@ body {
   background-color: $background;
   height:100vh;
 }
+
+@mixin get-white-space($height){
+  height:$height;
+  width: 100%;
+}
+
+.white-space-md{@include get-white-space(30px);}
+.white-space-md{@include get-white-space(20px);}
+.white-space-xs{@include get-white-space(10px);}

@@ -13,7 +13,7 @@ export const LoadablePageA = Loadable({
   loading: LoadingComponent
 })
 
-export default function ModuleA(props) {
+export default function RouteModuleA() {
   return (
     <div>
       <Switch>
