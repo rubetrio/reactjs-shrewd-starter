@@ -23,8 +23,7 @@ const routes = () => {
       <LeftBar />
       <div className='main'>
         <Route path='/pageA' component={LoadableModuleA} />
-        <Route path='/pageA1' component={PageA1} />
-        <Route path='/pageA2' component={PageA2} />
+        <Route path='/pageB' component={LoadableModuleB} />
       </div>
       <div className='sidebar-right'>
       </div>
