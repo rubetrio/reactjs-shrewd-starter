@@ -28,7 +28,27 @@ module.exports = {
     loaders: [
       { test: /\.ts(x?)$/, loader: 'babel-loader!ts-loader' },
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.jsx$/, loader: ['react-hot-loader/webpack','babel-loader'], exclude: /node_modules/ }
+      { test: /\.jsx$/, loader: ['react-hot-loader/webpack','babel-loader'], exclude: /node_modules/ },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'sass-loader', options: {
+              includePaths: ['./node_modules']
+            }
+          },
+        ]
+      },
+      {test: /\.jpe?g$|\.gif$|\.png$/i,loader: 'file-loader'},
+      { test: /\.css$/, loaders: ['style-loader', 'css-loader'] },
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" }
     ]
   },
   devServer: {

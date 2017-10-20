@@ -3,11 +3,6 @@ import { Link } from 'react-router-dom'
 import Loadable from 'react-loadable'
 import LoadingComponent from '../common/LoadingComponent'
 
-export const LoadablePageA = Loadable({
-  loader: () => import('./PageA'),
-  loading: LoadingComponent
-})
-
 class PageA extends React.Component{
   render(){
     return(

@@ -1,0 +1,49 @@
+@font-face {
+    font-family: "Lato Regular";
+    src: url('./fonts/Lato-Regular.eot'),
+    url('./fonts/Lato-Regular.woff') format('woff'),
+    url('./fonts/Lato-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding: 0;
+  font-size: 14px;
+  font-family: "Lato Regular","Helvetica Neue", serif;
+  color: #333;
+  overflow:hidden;
+}
+
+.container{
+  width: 100%;
+  display: flex;
+  direction: column;
+}
+
+.sidebar-left{
+  width: 33vh;
+  height:100xvh;
+  background-color: $sidebar-background-color;
+}
+
+.sidebar-left-header{
+  padding: 10px;
+  color: #fff;
+}
+
+.sidebar-right{
+  width: 60vh;
+  height:100xvh;
+  background-color: $sidebar-background-color;
+}
+
+.main{
+  width: 100%;
+  background-color: $background;
+  height:100vh;
+}
